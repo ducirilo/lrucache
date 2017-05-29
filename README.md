@@ -23,7 +23,7 @@ The source code file `main.cpp` will be compiled producing the executable `main`
 ```bash
   cl /EHsc main.cpp
 ```
-The `cl.exe` compiler generates an .obj file that contains the compiled code, and then runs the linker to create an executable proram named `main.exe`. To run this program at the command prompt, just type the following line in the shell:
+The `cl.exe` compiler generates an `.obj` file that contains the compiled code, and then runs the linker to create an executable proram named `main.exe`. To run this program at the command prompt, just type the following line in the shell:
 
 ```bash
   main
@@ -32,7 +32,7 @@ The program will be executed and its output will be shown on the prompt window.
 
 
 ## Playing with the code
-The executable program will run all instructions declared in the function `main()` of the source code file `main.cpp`, including:
+The executable program will run all instructions declared inside the function `main()` of the source code file `main.cpp`, including:
 
 ```cpp
 const unsigned N =4;
