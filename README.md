@@ -58,7 +58,7 @@ try {
 
 lruCache.destruct();
 ```
-In order to test different behaviors, just update the function `main()`'s content, by changing the cache's capacity (expressed in the constant `N`) and rebuilding it with operation `build(unsigned n)`; or even by inserting and reading data with distinct keys using the operations `add(unsigned key, string data)` and `get(unsigned key)`. You may also use the operation `destruct()` to clear all cache data.
+In order to test different behaviors, just update the function `main()`'s content, by changing the cache's capacity (expressed in the constant `N`) and rebuilding it with operation `build(unsigned n)`; or even by inserting and reading data in cache with distinct keys using the operations `add(unsigned key, string data)` and `get(unsigned key)`. You may also use the operation `destruct()` to clear all cache data.
 
 Once you have changed the function `main()` with new contents, do not forget to recompile your code before running it to see the new results.
 
