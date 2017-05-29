@@ -1,9 +1,9 @@
 # lrucache
-A simple C++ implementation for a Least Recently Used (LRU) Cache
+A simple C++ implementation for a Least Recently Used (LRU) Cache.
 
 
 ## Compiling and running
-### If you are in a Linux distribution:
+### If you are on a Linux distribution:
 
 1. Open a terminal at the directory where the project's sources have been downloaded
 2. In the project's root directory , execute the following commands (make sure you have `g++` compiler installed in your environment):
@@ -14,7 +14,7 @@ A simple C++ implementation for a Least Recently Used (LRU) Cache
 ```
 The source code file `main.cpp` will be compiled producing the executable `main`, which runs immediately afterwards.
 
-### If you are in a Windows system:
+### If you are on a Windows system:
 
 1. Open a command prompt window at the directory where the project's sources have been 
 2. Make sure you meet all prerequisites for compiling native C++ program in your environment with `cl.exe` compiler (please, see [this link for further details](https://msdn.microsoft.com/en-us/library/ms235639.aspx)).
