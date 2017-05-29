@@ -261,7 +261,7 @@ class LRUCache {
 
 
 int main(int argc, char** argv) {
-	const unsigned N = 10;
+	const unsigned N =4;
 	LRUCache lruCache;
 
 	lruCache.build(N);
