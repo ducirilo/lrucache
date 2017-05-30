@@ -17,7 +17,7 @@ using namespace std;
 */
 typedef struct MemoryPage {
     MemoryPage *prev, // a pointer to the previous memory page
-            *next; // a pointer to the next node memory page
+            *next; // a pointer to the next memory page
     string data; // the actual data which the memory page carries in
     unsigned key; //the key that unequivocally identifies the data carried in the memory page
 } MemoryPage;
@@ -48,8 +48,8 @@ typedef struct Cache {
  * The LRUCache class encapsulates the routines and data related to
  * cache maniputalion, furnishing the basic opearations: (i) to build a LRU cache so as
  * to make it available to receive new entries and to be queried for some entry;
- * (ii) to insert entries in cache; (iii) to read the value of a certain entry in cache
- * given its key; (iv) and, finally, to purge the cache from memory, by destructing it
+ * (ii) to insert entries in cache; (iii) to read the value of entries in cache
+ * given their key; (iv) and, finally, to purge the cache from memory, by destructing it
  * and freeing the memory it was using.
 */
 class LRUCache {
@@ -57,12 +57,12 @@ private:
     Cache cache;
 
     // A helper function to check if cache has reached its full capacity
-    bool isCacheFull() {
+    inline bool isCacheFull() {
         return cache.index.size() == cache.capacity;
     };
 
     // A helper function to check if cache has no page in it
-    bool isCacheEmpty() {
+    inline bool isCacheEmpty() {
         return cache.index.size() == 0;
     };
 

@@ -18,7 +18,7 @@ The source code file `main.cpp` will be compiled producing the executable `main`
 
 1. Open a command prompt window at the directory where the project's sources have been downloaded
 2. Make sure you meet all prerequisites for compiling native C++ program in your environment with `cl.exe` compiler (please, refer to [this link for further details](https://msdn.microsoft.com/en-us/library/ms235639.aspx)).
-3. If everything is fine, in the project's root directory , execute the following commands:
+3. If everything is fine, in the project's root directory , execute the following command:
 
 ```bash
   cl /EHsc main.cpp
