@@ -31,7 +31,7 @@ typedef struct Memory {
 } Memory;
 
 // A helper custom type to store cache's index as a associative key-value container
-typedef map<unsigned, MemoryPage *> CacheIndex;
+typedef map<unsigned, MemoryPage*> CacheIndex;
 
 /* A custom data structure representing the cache abstraction for this program's purposes
  * (in this implementation, cache is synthetized as a structure that keeps a reference to the
@@ -81,12 +81,10 @@ private:
 
     // A helper function to get more room on cache's memory by deleting the page at last position in cache's memory
     void makeARoom() {
-        if (isCacheEmpty() ||
-            !isCacheFull()) // Imediately returns from this function if it has been called in a context in which cache is either empty or not full
+        if (!isCacheFull()) // Imediately returns from this function if it has been called in a context in which cache is not full
             return;
 
-        if (cache.memory.head ==
-            cache.memory.tail) // If cache's memory has just one page in it, updates the 'memory.head' pointer to NULL
+        if (cache.memory.head == cache.memory.tail) // If cache's memory has just one page in it, updates the 'memory.head' pointer to NULL
             cache.memory.head = NULL;
 
         // Makes 'memory.tail' pointer to point to the memory page preceeding the one being removed
@@ -121,7 +119,7 @@ private:
         cout << "Cache's index state: " << "[  ";
 
 
-        for (map<unsigned, MemoryPage *>::iterator indexEntry = cache.index.begin();
+        for (CacheIndex::iterator indexEntry = cache.index.begin();
              indexEntry != cache.index.end(); ++indexEntry)
             cout << indexEntry->first << " => " << indexEntry->second << ",  ";
 
@@ -130,7 +128,7 @@ private:
 public:
     // Calss' constructor.
     LRUCache() {
-        build(0); // Invokes build() function with argument 0 so as to safely initialize cache's fundamental properties by the time of the class instantiation
+        build(0); // Invokes build() function with argument 0 so as to safely initialize cache's fundamental properties by the time of the class instantiation, leaving it at a ready state
     };
 
     // Creates a cache with N possible entries
@@ -142,7 +140,7 @@ public:
 
         cache.capacity = n;
 
-        for (map<unsigned, MemoryPage *>::iterator indexEntry = cache.index.begin();
+        for (CacheIndex::iterator indexEntry = cache.index.begin();
              indexEntry != cache.index.end(); ++indexEntry) {
             cache.index.erase(indexEntry->first);
             delete (indexEntry->second);
@@ -162,12 +160,11 @@ public:
     // Adds a new entry into cache's memory and updates the cache's index. If cache is out of its capacity,
     // this function firstly removes the least referred page from cache's before inserting the new entry
     void add(unsigned key, string data) {
-        cout << "Adding data to key: " << key << endl;
+        cout << "Adding value '" << data << "' to key: " << key << endl;
 
-        map<unsigned, MemoryPage *>::iterator indexEntry = cache.index.find(key);
+        CacheIndex::iterator indexEntry = cache.index.find(key);
 
-        if (indexEntry !=
-            cache.index.end()) {  // If cache has already an entry for the given key, then purges it from cache's memory first
+        if (indexEntry != cache.index.end()) {  // If cache has already an entry for the given key, then purges it from cache's memory first
             cout << "Key " << key << " has already an entry in the cache. Replacing it..." << endl;
 
             //cache.index.erase(key);
@@ -226,9 +223,9 @@ public:
     // If there is no data in cache for the key informed, throwns an exception.
     // Otherwise, returns the data and moves the page carrying it to the first position at cache's memory
     string get(unsigned key) {
-        cout << "Reading data from key: " << key << endl;
+        cout << "Reading value from key: " << key << endl;
 
-        map<unsigned, MemoryPage *>::iterator indexEntry = cache.index.find(key);
+        CacheIndex::iterator indexEntry = cache.index.find(key);
 
         if (indexEntry != cache.index.end()) {
             MemoryPage *foundMemoryPage = indexEntry->second;
@@ -269,38 +266,57 @@ public:
 
 int main(int argc, char **argv) {
     const unsigned N = 4;
+
+    // Instantiates a LRUCache object
     LRUCache lruCache;
 
+    // Initializes the cache with capacity for N entries
     lruCache.build(N);
 
+    // Adds some data into cache
     lruCache.add(0, "Marvin");
     lruCache.add(1, "Ford Prefect");
     lruCache.add(0, "Another Marvin");
-    lruCache.add(10, "Lisbeth Salander");
+    lruCache.add(13,"Lisbeth Salander");
     lruCache.add(3, "Mikael Blomkvist");
-    lruCache.add(4, "Trician McMillian");
+    lruCache.add(4, "Alicia Florrick");
+    lruCache.add(1, "Kalinda Sharma");
     lruCache.add(5, "Don't panic!");
 
+    // Reads data from cache given certain (existing or non-existing) keys
     try {
-        lruCache.get(3);
-        lruCache.get(11);
+        cout << "Value '" << lruCache.get(3) << "' read." << endl;
+        cout << "Value '" << lruCache.get(11) << "' read." << endl;
     } catch (const std::invalid_argument &e) {
         cerr << "An error has occurred while reading data from cache: " << e.what() << endl;
     }
 
+    // Purges all cache's content along with any other data related to it
     lruCache.destruct();
 
+    // Tries to read data from cache in an empty state
     try {
-        lruCache.get(5);
+        cout << "Value '" << lruCache.get(5) << "' read." << endl;
     } catch (const std::invalid_argument &e) {
         cerr << "An error has occurred while reading data from cache: " << e.what() << endl;
     }
 
-
+    // Initializes a new cache with capacity for 2 entries by rebuilding it
     lruCache.build(2);
+
+    // Adds some data into cache
     lruCache.add(0, "Coffee");
     lruCache.add(1, "Tea");
     lruCache.add(3, "You have got a life");
+
+    // Reads certain data from cache
+    try {
+        cout << "Value '" << lruCache.get(3) << "' read." << endl;
+    } catch (const std::invalid_argument &e) {
+        cerr << "An error has occurred while reading data from cache: " << e.what() << endl;
+    }
+
+    // Purges the cache
     lruCache.destruct();
 
     return 0;
