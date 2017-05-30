@@ -30,7 +30,7 @@ The `cl.exe` compiler generates an `.obj` file that contains the compiled code, 
 ```
 The program will be executed and its output will be shown on the prompt window.
 
-Instead of using the shell terminal or command prompt, you may also consider install an IDE to aid in compiling and run the C++ source code, sych as [Dev-C++](http://orwelldevcpp.blogspot.com.br/), [Code::Blocks](http://www.codeblocks.org/), [CLion](https://www.jetbrains.com/clion/), [VisualStudio](https://www.visualstudio.com/), [XCode](https://developer.apple.com/xcode/), [Eclipse](http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/mars1), [NetBeans](https://netbeans.org/features/cpp/), [Qt Creator](https://www.qt.io/ide/), among others.
+Instead of using the shell terminal or command prompt, you may also consider install an IDE to aid in compiling and running the C++ source code, sych as [Dev-C++](http://orwelldevcpp.blogspot.com.br/), [Code::Blocks](http://www.codeblocks.org/), [CLion](https://www.jetbrains.com/clion/), [VisualStudio](https://www.visualstudio.com/), [XCode](https://developer.apple.com/xcode/), [Eclipse](http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/mars1), [NetBeans](https://netbeans.org/features/cpp/), [Qt Creator](https://www.qt.io/ide/), among others.
 
 
 ## Playing with the code
